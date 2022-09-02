@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', init);
 //set data to a DOM
 function setDataToUI(data){
    let ui = `<div class="mb-10 col-md-6" style="margin-bottom:30px">                             
-   <div class="card" >
+   <div class="card" value="${data}" >
       <a href="" id="services-card">
          <div class="price">${data.price}<span>Ksh.</span>  / day</div>
          <div><img id="image" src="${data.image}"></div>
@@ -48,26 +48,19 @@ function setDataToUI(data){
 }
 
 function handleOnClick(){
-   let card = document.getElementById('services-card');
-   card.addEventListener('click', (event)=>{
-      event.preventDefault();
+   console.log('killed')
+   //persist data accross pages 
+   var cards = document.querySelectorAll('.card');
+   let data = cards.value;
+   console.log(JSON.stringify(data));
 
-      //get details
-      let price = document.getElementById('price').value;
-      let image = document.getElementById('image').value;
-      let name = document.getElementById('name').value;
-
-      //create a json object
-      const data = { "username": name,
-                       "image":image,
-                       "price":price
-
-        };
+      [...cards].forEach((card)=>{
+      card.addEventListener( 'click', function() {
+         card.classList.toggle('is-flipped');
+      });
+      });    
 
 
-   //persist data accross pages
-   sessionStorage.setItem("cart",data)
-   console.log("Reached here"+JSON.stringify(data));
-   })
+    window.localStorage.setItem('user', JSON.stringify(data));
    
 }

@@ -6,8 +6,8 @@ function init(){
 //getting session data and setting it on the UI
 function getSession(){
      //retrieving
-     let cartDetail = sessionStorage.getItem("cart");
-         console.log(JSON.stringify(cartDetail));
+     let user = window.localStorage.getItem('user');
+     return user;
 }
 // submit a Booking
 function addBooking(){

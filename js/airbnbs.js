@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', init);
 
 //set data to a DOM
 function setDataToUI(data){
-   let ui = `<div class="mb-10 col-md-6" style="margin-bottom:30px">                             
-   <div class="card" value="${data}" >
+   let ui = `<div class="mb-10 col-md-6" onClick="handleOnClick(${data.id})" style="margin-bottom:30px">                             
+   <div class="card"  >
       <a href="" id="services-card">
          <div class="price">${data.price}<span>Ksh.</span>  / day</div>
          <div><img id="image" src="${data.image}"></div>
@@ -47,20 +47,18 @@ function setDataToUI(data){
  return ui;
 }
 
-function handleOnClick(){
-   console.log('killed')
+function handleOnClick(data){
+   console.log(data)
    //persist data accross pages 
    var cards = document.querySelectorAll('.card');
    let data = cards.value;
-   console.log(JSON.stringify(data));
 
       [...cards].forEach((card)=>{
       card.addEventListener( 'click', function() {
-         card.classList.toggle('is-flipped');
+         location.href = "./book.html";
       });
       });    
 
-
     window.localStorage.setItem('user', JSON.stringify(data));
-   
+    
 }

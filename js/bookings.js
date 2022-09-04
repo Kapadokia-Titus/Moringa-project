@@ -1,6 +1,6 @@
 //global init 
-const url ="http://localhost:3000/hotels";
-const bookingsUrl ='http://localhost:3000/bookings';
+const url ="https://blushing-husky-acapella.glitch.me/hotels";
+const bookingsUrl ='https://blushing-husky-acapella.glitch.me/bookings';
 // main function
 function init(){
     addBooking();
